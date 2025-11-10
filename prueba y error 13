@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Dilema del Teléfono</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            background-image: linear-gradient(to bottom, black, #8B0000);
+            background-repeat: no-repeat;
+            background-attachment: fixed;         
+            color: white;
+            margin: 20px 0; 
+        }
+
+        header, section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* --- H1 CON ANIMACIÓN --- */
+        h1 {
+            font-family:'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            border-bottom: none;
+            margin-bottom: 10px;
+            
+            /* --- Animación aplicada --- */
+            opacity: 0; /* Inicia transparente */
+            animation-name: fadeInUp;
+            animation-duration: 3s; /* Duración de 1 segundo */
+            animation-fill-mode: forwards; /* Se queda en el estado final */
+            animation-timing-function: ease-out;
+            animation-delay: 0.3s; /* Espera 0.3s antes de empezar */
+        }
+        
+        header p {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+            font-family:'Montserrat', sans-serif;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #720594;
+            padding-bottom: 5px;
+            font-family:'Montserrat', sans-serif;
+        }
+        
+        nav {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 0 5px;
+            text-decoration: none;
+            background-color: #f5f5f5;
+            color: #333;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #e0e0e0;
+        }
+
+        video, audio {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+        }
+
+        /* Estilo para el Cuestionario */
+        .cuestionario details {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+        }
+
+        .cuestionario summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #0056b3; /* Color para la pregunta */
+        }
+        
+        .cuestionario details[open] {
+             background-color: #fefefe;
+        }
+
+        .cuestionario summary:hover {
+            color: #003d7c;
+        }
+
+        .cuestionario .respuesta {
+            padding-top: 10px;
+            margin-top: 10px;
+            border-top: 1px dashed #ccc;
+            color: #333;
+        }
+
+        /* --- CÓDIGO DE ANIMACIÓN --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* --- (INICIO) NUEVO LAYOUT DE 3 COLUMNAS --- */
+        .layout-container {
+            display: flex;
+            justify-content: center; /* Centra las columnas */
+            min-height: 100vh; /* asegura altura mínima de pantalla */
+            gap: 25px; /* Espacio entre columnas */
+            max-width: 1400px; /* Ancho total máximo de la página */
+            margin: 0 auto; /* Centra el layout en la página */
+            padding: 0 20px; /* Re-aplica el padding que estaba en el body */
+        }
+
+        .columna-central {
+            flex: 2; /* La columna central es la principal */
+            max-width: 800px; /* Mantiene el ancho original del contenido */
+            min-width: 0; /* Necesario para que flexbox maneje bien el ancho */
+        }
+
+        .columna-izquierda,
+        .columna-derecha {
+            flex: 1; /* Las laterales ocupan 1 parte */
+            
+            /* --- ESTILOS PARA DIVIDIR LAS IMÁGENES --- */
+            display: flex;
+            flex-direction: column;
+            /* justify-content: space-between; */ /* <-- SE QUITA */
+            gap: 20px; /* <-- NUEVO: Espacio entre las imágenes */
+            padding: 40px 10px; /* Mantenemos el espaciado superior/inferior */
+        }
+
+        .columna-izquierda img,
+        .columna-derecha img {
+            width: 100%; /* Ocupa todo el ANCHO */
+            flex-grow: 1; /* <-- NUEVO: Crece para llenar el espacio vertical */
+            flex-basis: 0; /* <-- NUEVO: Base de crecimiento flexible */
+            object-fit: cover; /* <-- NUEVO: Llena el espacio sin distorsión */
+            border-radius: 10px;
+            border: 1px solid #777;
+            /* margin-bottom: 20px; */ /* <-- SE QUITA */
+            opacity: 0.9;
+            min-height: 0; /* <-- NUEVO: Ayuda a flexbox a calcular el tamaño */
+        }
+        /* --- (FIN) NUEVO LAYOUT DE 3 COLUMNAS --- */
+        
+    </style>
+</head>
+<body>
+
+    <div class="layout-container">
+
+        <aside class="columna-izquierda">
+            <img src="celular.png" alt="Imagen izquierda 1">
+            <img src="celular.png" alt="Imagen izquierda 2">
+        </aside>
+        <div class="columna-central">
+            <header>
+                <h1>El Dilema del Teléfono</h1>
+                <p>De herramienta de conexión a motor de la atención</p>
+            </header>
+
+            <nav>
+                <a href="#intro">Introducción</a>
+                <a href="#video">Video</a>
+                <a href="#audio">Resumen de Audio</a>
+                <a href="#cuestionario">Cuestionario</a>
+            </nav>
+
+            <main>
+
+                <section id="intro">
+                    <h2>Introducción</h2>
+                    <p>
+                        Los videos brindan una visión general de la historia y el impacto de la tecnología de la comunicación, abarcando desde los orígenes del teléfono hasta el surgimiento de los teléfonos inteligentes. Una parte significativa del material se enfoca en el documental 2020 "El dilema de las redes sociales", detallando su premisa, elenco de expertos en tecnología y la disponibilidad de la película en plataformas como Netflix.
+                    </p>
+                    <p>
+                        El segundo tema principal traza la rivalidad entre Alexander Graham Bell y Elisha Grey por la invención del teléfono y la posterior competencia entre Motorola y Research in Motion (Blackberry) en el mercado de la telefonía móvil. Los textos describen cómo estas innovaciones transformaron la comunicación, pasando de sistemas rudimentarios a dispositivos portátiles que combinan voz, datos y diversas funcionalidades, revolucionando así la sociedad y los negocios a nivel mundial.
+                    </p>
+                </section>
+
+                <section id="video">
+                    <h2>Video: El Dilema del Teléfono</h2>
+                    <p>
+                        Este video explora la evolución del teléfono, desde una herramienta de conexión a una de control, y cómo la "economía de la atención" nos ha convertido en el producto principal.
+                    </p>
+                    <video controls>
+                        <source src="El_Dilema_del_Teléfono.mp4" type="video/mp4">
+                        Tu navegador no soporta la etiqueta de video.
+                    </video>
+                </section>
+
+                <section id="audio">
+                    <h2>Resumen de Audio: La Guerra del Teléfono</h2>
+                    <p>
+                        El audio profundiza en las intensas rivalidades que forjaron la industria de la comunicación, desde la "Guerra del Teléfono" original hasta el nacimiento del iPhone.
+                    </p>
+                    <audio controls>
+                        <source src="De_la_Guerra_del_Teléfono_al_iPhone__La_Historia_Secreta_de_Riv.m4a" type="audio/mp4">
+                        Tu navegador no soporta la etiqueta de audio.
+                    </audio>
+                    
+                    <h3>Puntos Clave del Audio:</h3>
+                    <ul>
+                        <li><strong>Bell vs. Grey:</strong> Se detalla la carrera por la patente. Western Union, el gigante del telégrafo, buscaba mejorar su sistema, pero Gardiner Hubbard (suegro de Bell) lo impulsó a crear algo totalmente nuevo. La controversia se centra en el examinador de patentes Zenas Wilber, quien supuestamente retrasó a Elisha Grey y filtró información a Alexander Graham Bell, permitiéndole registrar su patente apenas unas horas antes.</li>
+                        <li><strong>Motorola vs. AT&T:</strong> El audio narra el nacimiento del teléfono móvil. AT&T (Laboratorios Bell) propuso la tecnología celular pero buscaba un monopolio total, enfocado en teléfonos para coches. Motorola, liderada por Marty Cooper, vio la amenaza y, en una carrera de 90 días, desarrolló el primer prototipo portátil (el DynaTAC o "ladrillo").</li>
+                        <li><strong>La Primera Llamada Móvil:</strong> En 1973, Marty Cooper realizó la primera llamada desde la calle a su rival directo en AT&T, un golpe de efecto que demostró la viabilidad de la telefonía personal.</li>
+                        <li><strong>Nacimiento del "Clamshell" (StarTAC):</strong> El famoso diseño plegable de Motorola no fue estético, sino una solución práctica al problema del "butt dialing" (llamadas accidentales desde el bolsillo).</li>
+                        <li><strong>El Ascenso de BlackBerry (RIM):</strong> Se enfoca en cómo BlackBerry convergió todo (voz, datos, email) y perfeccionó el teclado QWERTY para el uso con los pulgares, dominando el mercado profesional.</li>
+                        <li><strong>La Revolución del iPhone:</strong> Se describe cómo el iPhone (2007) cambió el paradigma al eliminar el teclado físico en favor de una gran pantalla táctil y un ecosistema de aplicaciones, algo que ni Nokia ni BlackBerry supieron ver a tiempo.</li>
+                    </ul>
+                </section>
+
+
+                <section id="cuestionario" class="cuestionario">
+                    <h2>Cuestionario de Repaso</h2>
+                    <p>Pon a prueba tus conocimientos sobre el contenido del video y el audio. Haz clic en cada pregunta para revelar la respuesta.</p>
+
+                    <details>
+                        <summary>
+                            1. ¿Cuáles fueron las motivaciones de Bell y Grey en la "guerra del teléfono" y quién ganó la carrera de patentes?
+                        </summary>
+                        <div class="respuesta">
+                            Alexander Graham Bell era un "soñador" obsesionado con transmitir la voz humana. Elisha Grey era un "inventor práctico" que buscaba ganar un premio monetario de Western Union. Bell ganó la carrera, registrando su patente en la oficina solo unas horas antes de que Grey presentara su "caveat" (un aviso de pre-patente).
+                        </div>
+                    </DETAILS>
+
+                    <details>
+                        <summary>
+                            2. ¿Cuál fue la innovación clave de Martin Cooper (Motorola) y a quién realizó la primera llamada móvil histórica?
+                        </summary>
+                        <div class="respuesta">
+                            La innovación de Cooper fue crear un teléfono verdaderamente *portátil* (el DynaTAC, apodado "el ladrillo"), en lugar de uno fijado a un coche, que era lo que AT&T estaba desarrollando. En 1973, realizó la primera llamada a su principal rival, Joel Engel, en los Laboratorios Bell (AT&T).
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>
+                            3. El video describe un cambio del "Modelo Antiguo" al "Modelo Nuevo". ¿En qué consiste este cambio?
+                        </summary>
+                        <div class="respuesta">
+                            Es el cambio de ser un <strong>cliente</strong> a ser el <strong>producto</strong>.
+                            <ul>
+                                <li><strong>Modelo Antiguo (Bell, Motorola):</strong> Las empresas vendían dispositivos y servicios de conexión.</li>
+                                <li><strong>Modelo Nuevo (Plataformas Sociales):</strong> Las empresas ofrecen servicios "gratuitos" y venden nuestro tiempo y atención (nuestros datos) a los anunciantes.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>
+                            4. ¿Qué problema práctico llevó a la invención del diseño "clamshell" (plegable) del Motorola StarTAC?
+                        </summary>
+                        <div class="respuesta">
+                            El problema del "butt dialing" (llamadas accidentales). A medida que los teléfonos se hacían más pequeños, la gente los guardaba en el bolsillo y marcaba números sin querer al sentarse o moverse. El diseño plegable protegía el teclado y evitaba este problema.
+                        </div>
+                    </details>
+
+                </section>
+
+            </main>
+        </div>
+        <aside class="columna-derecha">
+            <img src="celular.png" alt="Imagen derecha 1">
+            <img src="celular.png" alt="Imagen derecha 2">
+        </aside>
+        </div>
+    </body>
+</html>

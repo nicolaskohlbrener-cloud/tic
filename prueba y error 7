@@ -1,1 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Dilema del Teléfono</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            background-image: linear-gradient(to bottom, black, #8B0000);
+            background-repeat: no-repeat;
+            background-attachment: fixed;         
+            color: white;
+            /* SE ELIMINAN: max-width, margin y padding de aquí. Se mueven al layout-container */
+            margin: 20px 0; /* Mantenemos el margen superior/inferior */
+        }
 
+        header, section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* --- H1 CON ANIMACIÓN --- */
+        h1 {
+            font-family:'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            border-bottom: none;
+            margin-bottom: 10px;
+            
+            /* --- Animación aplicada --- */
+            opacity: 0; /* Inicia transparente */
+            animation-name: fadeInUp;
+            animation-duration: 3s; /* Duración de 1 segundo */
+            animation-fill-mode: forwards; /* Se queda en el estado final */
+            animation-timing-function: ease-out;
+            animation-delay: 0.3s; /* Espera 0.3s antes de empezar */
+        }
+        
+        header p {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+            font-family:'Montserrat', sans-serif;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #720594;
+            padding-bottom: 5px;
+            font-family:'Montserrat', sans-serif;
+        }
+        
+        nav {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 0 5px;
+            text-decoration: none;
+            background-color: #f5f5f5;
+            color: #333;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #e0e0e0;
+        }
+
+        video, audio {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+        }
+
+        /* Estilo para el Cuestionario */
+        .cuestionario details {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+        }
+
+        .cuestionario summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #0056b3; /* Color para la pregunta */
+        }
+        
+        .cuestionario details[open] {
+             background-color: #fefefe;
+        }
+
+        .cuestionario summary:hover {
+            color: #003d7c;
+        }
+
+        .cuestionario .respuesta {
+            padding-top: 10px;
+            margin-top: 10px;
+            border-top: 1px dashed #ccc;
+            color: #333;
+        }
+
+        /* --- CÓDIGO DE ANIMACIÓN --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* --- (INICIO) NUEVO LAYOUT DE 3 COLUMNAS --- */
+        .layout-container {
+            display: flex;
+            justify-content: center; /* Centra las columnas */
+            align-items: flex-start; /* Alinea las columnas arriba */
+            gap: 25px; /* Espacio entre columnas */
+            max-width: 1400px; /* Ancho total máximo de la página */
+            margin: 0 auto; /* Centra el layout en la página */
+            padding: 0 20px; /* Re-aplica el padding que estaba en el body */
+        }
+
+        .columna-central {
+            flex: 2; /* La columna central es la principal */
+            max-width: 800px; /* Mantiene el ancho original del contenido */
+            min-width: 0; /* Necesario para que flexbox maneje bien el ancho */
+        }
+
+        .columna-izquierda,
+        .columna-derecha {
+            flex: 1; /* Las laterales ocupan 1 parte */
+            max-width: 250px;
+            /* Añadimos padding para alinear mejor con el contenido */
+            padding-top: 120px; 
+        }
+
+        .columna-izquierda img,
+        .columna-derecha img {
+            width: 100%; /* Imágenes responsivas */
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid #777;
+            margin-bottom: 20px; /* Espacio entre imágenes */
+            opacity: 0.9;
+        }
+        /* --- (FIN) NUEVO LAYOUT DE 3 COLUMNAS --- */
+        
+    </style>
+</head>
+<body>

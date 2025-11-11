@@ -27,7 +27,7 @@
         /* --- H1 CON ANIMACIÓN --- */
         h1 {
             font-family:'Montserrat', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2.5mirenrem;
             text-align: center;
             border-bottom: none;
             margin-bottom: 10px;
@@ -35,7 +35,7 @@
             /* --- Animación aplicada --- */
             opacity: 0; /* Inicia transparente */
             animation-name: fadeInUp;
-            animation-duration: 3s; /* Duración de 1 segundo */
+            animation-duration: 5s; /* Duración de 1 segundo */
             animation-fill-mode: forwards; /* Se queda en el estado final */
             animation-timing-function: ease-out;
             animation-delay: 0.3s; /* Espera 0.3s antes de empezar */
@@ -146,25 +146,23 @@
         .columna-derecha {
             flex: 1; /* Las laterales ocupan 1 parte */
             
-            /* --- ESTILOS PARA DIVIDIR LAS IMÁGENES --- */
+            /* --- ESTILOS ACTUALIZADOS PARA CENTRAR --- */
             display: flex;
             flex-direction: column;
-            /* justify-content: space-between; */ /* <-- SE QUITA */
-            gap: 20px; /* <-- NUEVO: Espacio entre las imágenes */
-            padding: 40px 10px; /* Mantenemos el espaciado superior/inferior */
+            justify-content: center; /* <-- NUEVO: Centra el grupo verticalmente */
+            align-items: center;     /* <-- Centra las imágenes horizontalmente */
+            gap: 20px;               /* <-- NUEVO: Espacio entre las 2 imágenes */
+            padding: 40px 10px; 
         }
 
         .columna-izquierda img,
         .columna-derecha img {
-            width: 100%; /* Ocupa todo el ANCHO */
-            flex-grow: 1; /* <-- NUEVO: Crece para llenar el espacio vertical */
-            flex-basis: 0; /* <-- NUEVO: Base de crecimiento flexible */
-            object-fit: cover; /* <-- NUEVO: Llena el espacio sin distorsión */
+            max-width: 100%;     /* Responsiva */
+            height: auto;        /* Mantiene la proporción */
             border-radius: 10px;
             border: 1px solid #777;
-            /* margin-bottom: 20px; */ /* <-- SE QUITA */
             opacity: 0.9;
-            min-height: 0; /* <-- NUEVO: Ayuda a flexbox a calcular el tamaño */
+            /* margin-bottom se quita, se usa 'gap' en el padre */
         }
         /* --- (FIN) NUEVO LAYOUT DE 3 COLUMNAS --- */
         
@@ -175,12 +173,12 @@
     <div class="layout-container">
 
         <aside class="columna-izquierda">
-            <img src="celular.png" alt="Imagen izquierda 1">
-            <img src="celular.png" alt="Imagen izquierda 2">
+            <img src="claro.jpg" alt="Imagen izquierda 1">
+            <img src="motorola.jpg" alt="Imagen izquierda 2">
         </aside>
         <div class="columna-central">
             <header>
-                <h1>El Dilema del Teléfono</h1>
+                <h1>Evolución e Impacto de los teléfonos móviles en la vida cotidiana</h1>
                 <p>De herramienta de conexión a motor de la atención</p>
             </header>
 
@@ -278,6 +276,7 @@
                         <div class="respuesta">
                             El problema del "butt dialing" (llamadas accidentales). A medida que los teléfonos se hacían más pequeños, la gente los guardaba en el bolsillo y marcaba números sin querer al sentarse o moverse. El diseño plegable protegía el teclado y evitaba este problema.
                         </div>
+Verify Done
                     </details>
 
                 </section>
@@ -285,8 +284,8 @@
             </main>
         </div>
         <aside class="columna-derecha">
-            <img src="celular.png" alt="Imagen derecha 1">
-            <img src="celular.png" alt="Imagen derecha 2">
+            <img src="telcel.png" alt="Imagen derecha 1">
+            <img src="blackberry.jpg" alt="Imagen derecha 2">
         </aside>
         </div>
     </body>
